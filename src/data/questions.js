@@ -6,37 +6,124 @@ export const questions = [
         correctAnswer: 'True',
     },
     {   id: 2,
-        question: 'Is the sky blue?',
+        question: ' Is the Earth flat?',
         options: ['True', 'False'],
-        correctAnswer: 'True',
+        correctAnswer: 'False',
     },
     {
         id: 3,
-        question: 'Is the sky blue?',
+        question: 'Is water a solid at room temperature?',
+        options: ['True', 'False'],
+        correctAnswer: 'False',
+    },
+    {
+        id: 4,
+        question: 'Is the sun the center of our solar system?',
+        options: ['True', 'False'],
+        correctAnswer:'True',
+    },
+    {
+        id: 5,
+        question: 'Are all birds able to fly?',
+        options: ['True', 'False'],
+        correctAnswer: 'False',
+    },
+    {
+        id: 6,
+        question: 'Is the capital of Japan Tokyo?',
         options: ['True', 'False'],
         correctAnswer: 'True',
     },
     {
-        id: 4,
-        question: 'What is the capital of France?',
-        options: ['London', 'Berlin', 'Paris', 'Madrid'],
+        id: 7,
+        question: 'Are diamonds made from coal?',
+        options: ['True', 'False'],
+        correctAnswer: 'False',
+    },
+    {
+        id: 8,
+        question: 'Is the Statue of Liberty located in Los Angeles?',
+        options: ['True', 'False'],
+        correctAnswer: 'False',
+    },
+    {
+        id: 9,
+        question: 'Are whales considered mammals?',
+        options: ['True', 'False'],
+        correctAnswer: 'True',
+    },
+    {
+        id: 10,
+        question: 'Is Pluto considered a planet?',
+        options: ['True', 'False'],
+        correctAnswer: 'False',
+    },
+    {
+        id: 11,
+        question: 'What is the chemical symbol for water?',
+        options: ['CO2', 'O3', 'K20', 'H2O'],
+        correctAnswer: 'H2O',
+    },
+    {
+        id: 12,
+        question: 'Which planet is known as the "Red Planet"?',
+        options: ['Earth', 'Venus', 'Mars', 'Jupiter'],
+        correctAnswer: 'Mars',
+    },
+    {
+        id: 13,
+        question: 'What is the largest mammal on Earth?',
+        options: ['Elephant', 'Blue Whale', 'Giraffe', 'Lion'],
         correctAnswer: 'Paris',
     },
     {
-        id: 5,
-        question: 'What is the capital of France?',
-        options: ['London', 'Berlin', 'Paris', 'Madrid'],
-        correctAnswer: 'Paris',
+        id: 14,
+        question: 'Who is the author of the Harry Potter book series?',
+        options: ['J.R.R Tolkein', 'J.K Rowling', 'George R.R. Martin', 'Stephen King'],
+        correctAnswer: 'J.K. Rowling',
     },
     {
-        id: 6,
-        question: 'What is the capital of France?',
-        options: ['London', 'Berlin', 'Paris', 'Madrid'],
-        correctAnswer: 'Paris',
+        id: 15,
+        question: 'Which country is known as the "Land of the Rising Sun"?',
+        options: ['China', 'Japan', 'South Korea', 'Thailand'],
+        correctAnswer: 'Japan',
+    },
+    {
+        id: 16,
+        question: 'Which instrument is known as the "King of Instruments"?',
+        options: ['Violin', 'Piano', 'Guitar', 'Flute'],
+        correctAnswer: 'Piano',
+    },
+    {
+        id: 17,
+        question: 'Who painted the Mona Lisa?',
+        options: ['Vincent van Gogh', 'Leanardo da Vinci', 'Michelangela', 'Pablo Picasso'],
+        correctAnswer: 'Leonardo da Vinci',
+    },
+    {
+        id: 18,
+        question: 'Which gas do plants absorb during photosynthesis?',
+        options: ['Oxygen', 'Nitrogen', 'Carbon Dioxide', 'Hydrogen'],
+        correctAnswer: 'Carbon Dioxide',
+    },
+    {
+        id: 19,
+        question: 'Which of the following is not a primary color?',
+        options: ['Red', 'Green', 'Blue', 'Yellow'],
+        correctAnswer: 'Green',
+    },
+    {
+        id: 20,
+        question: 'Which of the following are programming languages?',
+        options: ['Python', 'Cobra', 'Bash', 'Solidity'],
+        correctAnswer: 'Cobra',
     },
     // Add more questions here...
   ];
   
+
+
+
 
 //   export const true_or_false_questions = [
 //     {

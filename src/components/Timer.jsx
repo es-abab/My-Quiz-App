@@ -1,55 +1,39 @@
 import React, { useEffect, useState } from 'react';
 
-const Timer = ({ totalSeconds }) => {
-  const [time, setTime] = useState({
-    hours: Math.floor(totalSeconds / 3600),
-    minutes: Math.floor((totalSeconds % 3600) / 60),
-    seconds: totalSeconds % 60,
-  });
+const Timer = ({ totalTime, onTimeUp }) => {
+  const [timeLeft, setTimeLeft] = useState(totalTime);
 
   useEffect(() => {
-    let timer = setInterval(() => {
-      setTime((prevTime) => {
-        let newSeconds = prevTime.seconds - 1;
-        let newMinutes = prevTime.minutes;
-        let newHours = prevTime.hours;
-
-        if (newSeconds < 0) {
-          newSeconds = 59;
-          newMinutes -= 1;
-        }
-
-        if (newMinutes < 0) {
-          newMinutes = 59;
-          newHours -= 1;
-        }
-
-        if (newHours < 0) {
-          newHours = 0;
-        }
-
-        return {
-          hours: newHours,
-          minutes: newMinutes,
-          seconds: newSeconds,
-        };
-      });
+    const interval = setInterval(() => {
+      setTimeLeft((prevTime) => prevTime - 1);
     }, 1000);
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
+    if (timeLeft === 0) {
+      clearInterval(interval);
+      onTimeUp();
+      alert('Time is up. Quiz will be submitted automatically.');
+    }
 
-  const padNumber = (num) => {
-    return num.toString().padStart(2, '0');
-  };
+    return () => clearInterval(interval);
+  }, [timeLeft, onTimeUp]);
+
+  // Convert time from seconds to minutes and seconds
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
 
   return (
-    <div className="text-center">
-      <span className="text-xl font-semibold">
-        {padNumber(time.hours)}:{padNumber(time.minutes)}:{padNumber(time.seconds)}
-      </span>
+    <div className="text-center flex items-center mt-4">
+      <div className="text-2xl font-semibold">
+        <span className='text-sm mr-3'>Time Left </span>
+        <span>{minutes < 10 ? `0${minutes}` : minutes}</span>
+        <span className="mx-1">:</span>
+        <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+      </div>
+      {/* <div className="text-sm">
+        <span>Minutes</span>
+        <span className="mx-1">:</span>
+        <span>Seconds</span>
+      </div> */}
     </div>
   );
 };

@@ -4,6 +4,7 @@ import Question from "./Question";
 import ResultsModal from "./ResultsModal";
 import Timer from './Timer';
 import { questions } from "../data/questions";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 const QuizPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -48,9 +49,9 @@ const QuizPage = () => {
       ...prevAnswers,
       { question: currentQuestion.question, answer: selectedOption },
     ]);
-    if (currentQuestionIndex + 1 < questions.length) {
-        setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-      }
+    // if (currentQuestionIndex + 1 < questions.length) {
+    //     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    //   }
   };
 
   const calculateScore = () => {
@@ -145,9 +146,13 @@ const QuizPage = () => {
         {questions.map((question) => (
           <Question
             key={question.id} // Add a unique key to each Question component
-            question={questions[currentQuestionIndex].question}
-            options={questions[currentQuestionIndex].options}
-            onAnswer={handleAnswer}
+            question={question.question}
+            options={question.options}
+            number={question.id}
+            // question={questions[currentQuestionIndex].question}
+            // options={questions[currentQuestionIndex].options}
+            // onAnswer={handleAnswer}
+            onAnswer={(answer) => handleAnswer(question.question, answer)}
           />
         ))}
 
@@ -173,6 +178,8 @@ const QuizPage = () => {
       ) : (
         ""
       )}
+
+      <ScrollToTopButton />
       {/* You may want to add navigation buttons to go to the next question */}
     </div>
   );
