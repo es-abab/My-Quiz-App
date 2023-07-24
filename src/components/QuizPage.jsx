@@ -6,7 +6,8 @@ import Timer from './Timer';
 import { questions } from "../data/questions";
 import ScrollToTopButton from "./ScrollToTopButton";
 
-const QuizPage = () => {
+
+const QuizPage = ({endQuiz}) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
   const [timeRemaining, setTimeRemaining] = useState(30 * 60); // 30 minutes in seconds
@@ -111,8 +112,10 @@ const QuizPage = () => {
   };
 
   const closeModal = () => {
+      endQuiz={false}
+      setCurrentQuestionIndex(0);
+      setUserAnswers([]);
     setShowResultsModal(false);
-    setCurrentQuestionIndex(0);
     setUserAnswers([]);
   };
 

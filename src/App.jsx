@@ -11,11 +11,15 @@ const App = () => {
   const startQuiz = () => {
     setQuizStarted(true);
   };
+  const endQuiz = () => {
+    setQuizStarted(false);
+  };
 
   return (
     <div>
-      {quizStarted ? <QuizPage /> : <IntroPage startQuiz={startQuiz} />}
+      {quizStarted ? <QuizPage endQuiz={endQuiz}/> : <IntroPage startQuiz={startQuiz} />}
     </div>
+    
   );
 };
 

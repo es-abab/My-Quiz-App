@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BsArrowUpCircleFill } from 'react-icons/bs';
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,10 +29,10 @@ const ScrollToTopButton = () => {
     <>
       {isVisible && (
         <button
-          className="fixed bottom-10 right-10 bg-blue-500 text-white px-4 py-2 rounded"
+          className="fixed bottom-10 right-10  text-slate-800 text-4xl px-4 py-2 outline-none bg-white animate-bounce_slow border-none"
           onClick={scrollToTop}
         >
-          Scroll to Top
+          <BsArrowUpCircleFill />
         </button>
       )}
     </>
