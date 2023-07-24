@@ -8,7 +8,7 @@ import ScrollToTopButton from "./ScrollToTopButton";
 
 const QuizPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
+  const [userAnswers, setUserAnswers] = useState({});
   const [timeRemaining, setTimeRemaining] = useState(30 * 60); // 30 minutes in seconds
   const [showResultsModal, setShowResultsModal] = useState(false);
   const [quizStarted, setQuizStarted] = useState(true);
@@ -17,55 +17,93 @@ const QuizPage = () => {
 
 //   const [timeRemaining, setTimeRemaining] = useState(1800); // 30 minutes in seconds
 
+  // useEffect(() => {
+  //   if (timeRemaining > 0 && !showResultsModal) {
+  //     const timer = setTimeout(() => {
+  //       setTimeRemaining((prevTime) => prevTime - 1);
+  //     }, 1000);
+
+  //     return () => clearTimeout(timer);
+  //   } else if (timeRemaining === 0 && !showResultsModal) {
+  //     // Handle when the time is up
+  //     setShowResultsModal(true);
+  //   }
+  // }, [timeRemaining, showResultsModal]);
+
+  // useEffect(() => {
+  //   if (timeRemaining > 0) {
+  //     const timer = setTimeout(() => {
+  //       setTimeRemaining((prevTime) => prevTime - 1);
+  //     }, 1000);
+
+  //     return () => clearTimeout(timer);
+  //   } else {
+  //     // Time's up, automatically submit the quiz
+  //     handleSubmit();
+  //   }
+  // }, [timeRemaining]);
+
   useEffect(() => {
     if (timeRemaining > 0 && !showResultsModal) {
       const timer = setTimeout(() => {
         setTimeRemaining((prevTime) => prevTime - 1);
       }, 1000);
-
+  
       return () => clearTimeout(timer);
     } else if (timeRemaining === 0 && !showResultsModal) {
-      // Handle when the time is up
-      setShowResultsModal(true);
-    }
-  }, [timeRemaining, showResultsModal]);
-
-  useEffect(() => {
-    if (timeRemaining > 0) {
-      const timer = setTimeout(() => {
-        setTimeRemaining((prevTime) => prevTime - 1);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    } else {
       // Time's up, automatically submit the quiz
       handleSubmit();
     }
-  }, [timeRemaining]);
+  }, [timeRemaining, showResultsModal]);
+  
 
 
-  const handleAnswer = (selectedOption) => {
-    setUserAnswers((prevAnswers) => [
+  const handleAnswer = (selectedOption, selectedAnswer) => {
+    setUserAnswers((prevAnswers) => ({
       ...prevAnswers,
-      { question: currentQuestion.question, answer: selectedOption },
-    ]);
-    // if (currentQuestionIndex + 1 < questions.length) {
-    //     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    //   }
+      [currentQuestion.id]: selectedAnswer,
+      //  question: currentQuestion.question, 
+      //  answer: selectedAnswer ,
+  }));
+    if (currentQuestion.id + 1 < questions.length) {
+        setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+      }
+       console.log(userAnswers)
   };
 
   const calculateScore = () => {
     let score = 0;
-    userAnswers.forEach((userAnswer) => {
-      const question = questions.find(
-        (q) => q.question === userAnswer.question
-      );
-      if (question && userAnswer.answer === question.correctAnswer) {
+    questions.forEach((question) => {
+      const userAnswer = userAnswers[question.id];
+      if (userAnswer !== undefined && userAnswer === question.correctAnswer) {
         score++;
+        console.log(score)
       }
     });
     return score;
   };
+
+  
+  // const calculateScore = (userAnswers, questions) => {
+  //   // Initialize the score to 0
+  //   let score = 0;
+
+  //   // Loop through the userAnswers array
+  //   userAnswers.forEach((userAnswer) => {
+  //     // Find the corresponding question from the questions array based on the question's text
+  //     const question = questions.find(
+  //       (q) => q.question === userAnswer.question
+  //     );
+
+  //     // Check if the user's answer matches the correct answer for the question
+  //     if (question && userAnswer.answer === question.correctAnswer) {
+  //       // Increment the score if the answer is correct
+  //       score++;
+  //     }
+  //   });
+
+  //   return score;
+  // };
 
   const handleSubmit = () => {
     const score = calculateScore(userAnswers, questions);
@@ -76,10 +114,6 @@ const QuizPage = () => {
     setShowResultsModal(false);
     setCurrentQuestionIndex(0);
     setUserAnswers([]);
-  };
-
-  const startQuiz = () => {
-    setQuizStarted(true);
   };
 
   if (showResultsModal) {
