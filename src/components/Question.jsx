@@ -42,7 +42,7 @@ const Question = ({ question, options, number, onAnswer }) => {
             // onClick={() => {onAnswer(option)}} 
             onClick={() => handleOptionClick(option)}
             className={`cursor-pointer ${
-              selectedAnswer === option ? 'bg-white/20' : '' }`}
+              selectedAnswer === option ? 'bg-slate-400/50' : '' }`}
             > {option}</button>
           </li>
         ))}
