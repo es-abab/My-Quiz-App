@@ -118,14 +118,14 @@ const QuizPage = () => {
 
   if (showResultsModal) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-20">
+      <div className="fixed inset-0 flex items-center justify-center bg-slate-800 bg-opacity-70">
         <div className="bg-slate-800 p-6 w-[40vw] h-[25vh] rounded-md shadow-lg flex flex-col items-center justify-center">
-          <h2 className="text-3xl font-bold mb-4">Quiz completed successfully!</h2>
-          <h3 className="text-lg font-semibold mb-10">
+          <h2 className="text-white text-3xl font-bold mb-4">Quiz completed successfully!</h2>
+          <h3 className="text-slate-200 text-lg font-semibold mb-10">
              Your Score: {calculateScore()} / {questions.length}
           </h3>
           <button
-            className="text-white px-10 py-2"
+            className="bg-orange-400 hover:bg-white hover:text-slate-800 hover:shadow-lg  text-white px-10 py-2 border-none transition duration-200 ease-in"
             onClick={
                 closeModal
                 // startQuiz
