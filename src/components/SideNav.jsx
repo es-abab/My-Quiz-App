@@ -2,6 +2,7 @@ import React from 'react'
 import { MdDashboard } from 'react-icons/md'
 import { RiBarChart2Fill } from 'react-icons/ri'
 import { FaUsers, FaShippingFast } from 'react-icons/fa'
+import { PiBooksFill, PiExamFill } from 'react-icons/pi'
 // import WhiteLogo from '../assets/white_logo.png'
 // import { isTypeElement } from 'typescript'
 import { useNavigate } from 'react-router-dom'
@@ -16,14 +17,14 @@ const SideNav = () => {
       icon: < MdDashboard />,
     },
     {
-      name: "applicants",
+      name: "courses",
       path: "/recruiter/applicants",
-      icon: < FaUsers />,
+      icon: < PiBooksFill />,
     },
     {
-      name: "profile",
+      name: "exams",
       path: "/recruiter/profile",
-      icon: < FaShippingFast />,
+      icon: < PiExamFill />,
     },
   ]
   return (
@@ -47,7 +48,11 @@ const SideNav = () => {
           }
           
         </div >
-        {/* <Logout /> */}
+        {/* <div>
+          <div className='bg'>
+          <MdLogout />
+          </div>
+        </div> */}
       </div>
       <div className="main">
         {/* {props.children} */}
