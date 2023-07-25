@@ -22,7 +22,7 @@ const Timer = ({ totalTime, onTimeUp }) => {
   const seconds = timeLeft % 60;
 
   return (
-    <div className="text-center flex items-center mt-4">
+    <div className="text-center flex items-center ">
       <div className="text-white text-2xl font-semibold">
         <span className='text-white/50 text-sm mr-3'>Time Left </span>
         <span>{minutes < 10 ? `0${minutes}` : minutes}</span>

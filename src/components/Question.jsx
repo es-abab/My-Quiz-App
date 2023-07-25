@@ -32,9 +32,27 @@ const Question = ({ question, options, number, onAnswer }) => {
 
   return (
 <>
-    <div className='flex flex-col m-auto justify-start items-start text-xl gap-5 py-10 w-[50vw]'>
-       <h3 className="text-lg font-semibold mb-4"><span className='mr-5'>{number}.</span>{question}</h3>
-       <ul className='flex gap-5'>
+    <div className='flex flex-col m-auto justify-start items-start text-xl gap-3 py-8 w-[50vw]'>
+       <h3 className="text-lg font-semibold "><span className='mr-5'>{number}.</span>{question}</h3>
+       
+       <ul className="flex flex-col gap-2">
+        {options.map((option) => (
+          <li key={option}>
+            <label className="flex items-center text-slate-800 font-semibold">
+              <input
+                type="radio"
+                value={option}
+                checked={selectedAnswer === option}
+                onChange={() => handleOptionClick(option)}
+                className="cursor-pointer appearance-none rounded border-2 border-slate-500 w-4 h-4 checked:bg-orange-300 checked:border "
+              />
+              <span className="ml-2">{option}</span>
+            </label>
+          </li>
+        ))}
+      </ul>
+       
+       {/* <ul className='flex gap-5'>
          {options.map((option) => (
           <li key={option} 
           className='bg-grey-800'
@@ -47,7 +65,7 @@ const Question = ({ question, options, number, onAnswer }) => {
             > {option}</button>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
 
     {/* <div className="my-4">

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/NavBar";
 import Question from "../components/Question";
 import Timer from "../components/Timer";
@@ -55,11 +56,15 @@ const Quiz = ({ endQuiz }) => {
     setShowResultsModal(true);
   };
 
+  const navigate = useNavigate();
+
+
   const closeModal = () => {
     setCurrentQuestionIndex(0);
     setUserAnswers([]);
     setShowResultsModal(false);
     setUserAnswers([]);
+    navigate('/home');
   };
 
   if (showResultsModal) {
@@ -91,7 +96,7 @@ const Quiz = ({ endQuiz }) => {
     <div>
       <Navbar timeRemaining={timeRemaining} onSubmit={handleSubmit} />
       <div>
-        <div className="mx-auto border-b-2 border-b-white/50 my-5 w-[50vw]">
+        <div className="mx-[10vw] border-b-2 border-b-white/50 my-5 w-[50vw]">
           {questions.map((question) => (
             <Question
               key={question.id} // Add a unique key to each Question component
@@ -132,7 +137,7 @@ const Quiz = ({ endQuiz }) => {
         {/* You may want to add navigation buttons to go to the next question */}
       </div>
     </div>
-    
+
   );
 };
 

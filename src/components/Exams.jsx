@@ -1,12 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { BsCloudsFill } from "react-icons/bs";
 import {BiSolidNetworkChart} from 'react-icons/bi'
 import {MdApps} from 'react-icons/md'
 
 const Exams = () => {
+  const navigate = useNavigate();
+  const handleQuizStart = () => {
+    navigate('/quiz')
+  }
   return (
     <>
-      <div className="relative my-10 flex justify-between items-center p-10 w-[40vw] h-[15vh]  bg-slate-300 rounded-lg hover:shadow-lg hover:bg-blue-300 cursor-pointer transition duration-300 ease-in">
+      <div className="relative my-10 flex justify-between items-center p-10 w-[40vw] h-[15vh]  bg-slate-300 rounded-lg hover:shadow-lg hover:bg-blue-300 cursor-pointer transition duration-300 ease-in"
+      onClick={handleQuizStart}
+      >
         <div className="">
           <BsCloudsFill size={"84"} />
         </div> 
@@ -23,7 +30,9 @@ const Exams = () => {
         </div>
       </div>
 
-      <div className=" relative my-10 flex justify-between items-center p-10 w-[40vw] h-[15vh]  bg-slate-300 rounded-lg hover:shadow-lg hover:bg-blue-300 cursor-pointer transition duration-300 ease-in">
+      <div className=" relative my-10 flex justify-between items-center p-10 w-[40vw] h-[15vh]  bg-slate-300 rounded-lg hover:shadow-lg hover:bg-blue-300 cursor-pointer transition duration-300 ease-in"
+      onClick={handleQuizStart}
+      >
         <div className="">
           <BiSolidNetworkChart size={"84"} />
         </div>
@@ -40,7 +49,9 @@ const Exams = () => {
         </div>
       </div>
 
-      <div className="relative my-10 flex justify-between items-center p-10 w-[40vw] h-[15vh]  bg-slate-300 rounded-lg hover:shadow-lg hover:bg-blue-300 cursor-pointer transition duration-300 ease-in">
+      <div className="relative my-10 flex justify-between items-center p-10 w-[40vw] h-[15vh]  bg-slate-300 rounded-lg hover:shadow-lg hover:bg-blue-300 cursor-pointer transition duration-300 ease-in"
+      onClick={handleQuizStart}
+      >
         <div className="">
           <MdApps size={"84"} />
         </div>

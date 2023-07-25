@@ -4,13 +4,13 @@ import { RiBarChart2Fill } from "react-icons/ri";
 import { FaUsers, FaShippingFast } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import SideNav from "../components/SideNav";
-import NavBar from "../components/NavBar";
+import Nav from "../components/Nav";
 import Exams from "../components/Exams";
 
 const HomePage = () => {
   return (
     <div>
-      <NavBar />
+      <Nav />
       <div className="flex">
         <SideNav />
         <div className="py-5 px-[5vw] w-[75vw]"> 
