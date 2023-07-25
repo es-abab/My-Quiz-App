@@ -7,7 +7,7 @@ import { questions } from "../data/questions";
 import ScrollToTopButton from "./ScrollToTopButton";
 
 
-const QuizPage = ({endQuiz}) => {
+const QuizPag = ({endQuiz}) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
   const [timeRemaining, setTimeRemaining] = useState(30 * 60); // 30 minutes in seconds
@@ -112,7 +112,7 @@ const QuizPage = ({endQuiz}) => {
   };
 
   const closeModal = () => {
-      endQuiz={false}
+      // endQuiz={false}
       setCurrentQuestionIndex(0);
       setUserAnswers([]);
     setShowResultsModal(false);
@@ -222,4 +222,4 @@ const QuizPage = ({endQuiz}) => {
   );
 };
 
-export default QuizPage;
+export default QuizPag;

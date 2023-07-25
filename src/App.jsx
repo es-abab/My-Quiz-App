@@ -1,8 +1,13 @@
 import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import WelcomePage from './WelcomePage';
+import LoginPage from './pages/LoginPage'
+import HomePage from './pages/HomePage'
+import QuizPage from './pages/Quiz';
 
 import { useState } from 'react';
 import IntroPage from './components/IntroPage';
-import QuizPage from './components/QuizPage';
+// import QuizPage from './components/QuizPage';
 // import { questions } from '../data/questions';
 
 const App = () => {
@@ -16,10 +21,13 @@ const App = () => {
   };
 
   return (
-    <div>
-      {quizStarted ? <QuizPage endQuiz={endQuiz}/> : <IntroPage startQuiz={startQuiz} />}
-    </div>
-    
+    <>  
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/quiz" element={<QuizPage />} />
+      </Routes>
+    </>
   );
 };
 

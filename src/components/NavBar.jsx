@@ -8,7 +8,7 @@ const Navbar = ({ timeRemaining, onSubmit }) => {
     ;
   };
   return (
-    <div className='flex items-center justify-between w-[100vw] px-[15vw] py-5 bg-slate-800'>
+    <div className='flex items-center justify-between h-[10vh] w-[100vw] px-[15vw] py-5 bg-slate-800'>
       {/* <div className='text-xl'>Time Remaining: {timeRemaining}</div> */}
       <Timer totalTime={1800} onTimeUp={handleTimeUp} />
       <button onClick={onSubmit}
