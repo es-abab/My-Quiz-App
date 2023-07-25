@@ -32,8 +32,8 @@ const Question = ({ question, options, number, onAnswer }) => {
 
   return (
 <>
-    <div className='flex flex-col m-auto justify-start items-start text-xl gap-3 py-8 w-[50vw]'>
-       <h3 className="text-lg font-semibold "><span className='mr-5'>{number}.</span>{question}</h3>
+    <div className='flex flex-col m-auto justify-start items-start text-xl gap-3 py-4 w-[50vw]'>
+       <h3 className="text-lg font-semibold "><span className='mr-3'>{number}.</span>{question}</h3>
        
        <ul className="flex flex-col gap-2">
         {options.map((option) => (

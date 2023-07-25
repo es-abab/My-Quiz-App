@@ -37,16 +37,16 @@ const Scoreboard = () => {
         {/* <Timer /> */}
     <Navbar />  
         
-    <div className=" fixed top-[150px] right-[85px] w-[25rem] shadow-md h-[50vh] px-10 py-5 rounded-lg bg-slate-800">
+    <div className=" fixed top-[150px] right-[130px] h-[28rem] w-[20rem] shadow-md h-[50vh] px-10 py-5 rounded-lg bg-slate-800">
       <h2 className='mb-5 text-2xl text-white font-bold'>Score Board</h2>
       <div className="grid grid-cols-5 gap-2">
         {grid.map((index) => (
-          <div key={index} className="grid-item w-12 h-12 flex items-center justify-center bg-gray-200 border border-gray-300 rounded-full cursor-pointer">
+          <div key={index} className="grid-item w-10 h-10 flex items-center justify-center bg-gray-200 border border-gray-300 rounded-full cursor-pointer">
             {index + 1}
           </div>
         ))}
       </div>
-      <div className="summary flex justify-between mt-8 pt-5 border-t-2 text-white font-bold">
+      <div className="summary flex justify-between mt-8 pt-5 border-t-2 text-white text-sm font-bold">
         <p>Answered: 10</p>
         <p>Unanswered: 20</p>
         <p>Pending: 5</p>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { MdDashboard } from 'react-icons/md'
+import { MdDashboard, MdLogout } from 'react-icons/md'
 import { RiBarChart2Fill } from 'react-icons/ri'
 import { FaUsers, FaShippingFast } from 'react-icons/fa'
 import { PiBooksFill, PiExamFill } from 'react-icons/pi'
@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 
 const SideNav = () => {
   const navigate = useNavigate()
+  
   const menuItems = [
     {
       name: "home",
@@ -25,6 +26,11 @@ const SideNav = () => {
       name: "exams",
       path: "/recruiter/profile",
       icon: < PiExamFill />,
+    },
+    {
+      name: "logout",
+      path: "/",
+      icon: < MdLogout />,
     },
   ]
   return (

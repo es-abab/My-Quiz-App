@@ -29,7 +29,7 @@ const ScrollToTopButton = () => {
     <>
       {isVisible && (
         <button
-          className="fixed bottom-10 right-10  text-slate-800 text-4xl px-4 py-2 outline-none bg-white animate-bounce_slow border-none"
+          className="fixed bottom-10 right-10 rounded-full text-slate-800 text-4xl px-2 py-2 outline-none bg-white animate-bounce_slow border-none"
           onClick={scrollToTop}
         >
           <BsArrowUpCircleFill />
