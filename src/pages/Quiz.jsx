@@ -132,6 +132,7 @@ const Quiz = ({ endQuiz }) => {
         {/* You may want to add navigation buttons to go to the next question */}
       </div>
     </div>
+    
   );
 };
 
