@@ -14,17 +14,17 @@ const SideNav = () => {
   const menuItems = [
     {
       name: "home",
-      path: "/recruiter/home",
+      path: "/home",
       icon: < MdDashboard />,
     },
     {
       name: "courses",
-      path: "/recruiter/applicants",
+      path: "/applicants",
       icon: < PiBooksFill />,
     },
     {
       name: "exams",
-      path: "/recruiter/profile",
+      path: "/profile",
       icon: < PiExamFill />,
     },
     {
@@ -35,7 +35,7 @@ const SideNav = () => {
   ]
   return (
     <div >
-      <div className="bg-slate-400/50 w-[25vw] h-[90vh] py-10">
+      <div className="bg-slate-400 w-[20vw] h-[90vh] py-10">
         <div className="sidebar-header">
         {/* <img src={WhiteLogo} alt="logo" className="sidebar-whiteLogo" /> */}
         </div>

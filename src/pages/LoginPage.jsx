@@ -38,19 +38,6 @@ const LoginPage = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    // <div>
-    //   <button className='bg-slate-900 text-white font-bold' onClick={handleSignin}>Signin</button>
-    // </div>
-    //   <div className="flex flex-col items-center justify-center bg-slate-900 h-screen w-screen">
-    //   <h1 className="text-4xl font-bold mb-4 text-white">Welcome to My App</h1>
-
-    //   <button
-    //     className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-    //     onClick={() => loginWithRedirect()}
-    //   >
-    //     Log In
-    //   </button>
-    // </div>
 
     <div className="flex items-center justify-center w-screen min-h-screen bg-slate-900">
       {isLogin ? (
@@ -135,7 +122,7 @@ const LoginPage = () => {
               type="submit"
               className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
             >
-              Login
+              Submit
             </button>
             <p className="py-2 text-sm">
               Already have an account?{" "}

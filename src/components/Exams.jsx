@@ -20,7 +20,7 @@ const Exams = () => {
         <div className="flex flex-col justify-left w-[60%]">
           <div className="text-2xl text-start font-bold">Cloud computing</div>
           <div className="text-md font-semibold text-left">
-            <span className="mr-2">Time:</span>4:00pm - 6:00pm
+            <span className="mr-2">Time:</span>Unspecified
           </div>
           <div className="text-md font-semibold text-left">16th July, 2023</div>
           {/* <div>Exam duration</div> */}

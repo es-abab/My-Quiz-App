@@ -16,33 +16,6 @@ const QuizPag = ({endQuiz}) => {
 
   const currentQuestion = questions[currentQuestionIndex];
 
-//   const [timeRemaining, setTimeRemaining] = useState(1800); // 30 minutes in seconds
-
-  // useEffect(() => {
-  //   if (timeRemaining > 0 && !showResultsModal) {
-  //     const timer = setTimeout(() => {
-  //       setTimeRemaining((prevTime) => prevTime - 1);
-  //     }, 1000);
-
-  //     return () => clearTimeout(timer);
-  //   } else if (timeRemaining === 0 && !showResultsModal) {
-  //     // Handle when the time is up
-  //     setShowResultsModal(true);
-  //   }
-  // }, [timeRemaining, showResultsModal]);
-
-  // useEffect(() => {
-  //   if (timeRemaining > 0) {
-  //     const timer = setTimeout(() => {
-  //       setTimeRemaining((prevTime) => prevTime - 1);
-  //     }, 1000);
-
-  //     return () => clearTimeout(timer);
-  //   } else {
-  //     // Time's up, automatically submit the quiz
-  //     handleSubmit();
-  //   }
-  // }, [timeRemaining]);
 
   useEffect(() => {
     if (timeRemaining > 0 && !showResultsModal) {
@@ -84,27 +57,6 @@ const QuizPag = ({endQuiz}) => {
     return score;
   };
 
-  
-  // const calculateScore = (userAnswers, questions) => {
-  //   // Initialize the score to 0
-  //   let score = 0;
-
-  //   // Loop through the userAnswers array
-  //   userAnswers.forEach((userAnswer) => {
-  //     // Find the corresponding question from the questions array based on the question's text
-  //     const question = questions.find(
-  //       (q) => q.question === userAnswer.question
-  //     );
-
-  //     // Check if the user's answer matches the correct answer for the question
-  //     if (question && userAnswer.answer === question.correctAnswer) {
-  //       // Increment the score if the answer is correct
-  //       score++;
-  //     }
-  //   });
-
-  //   return score;
-  // };
 
   const handleSubmit = () => {
     const score = calculateScore(userAnswers, questions);
@@ -141,40 +93,6 @@ const QuizPag = ({endQuiz}) => {
     );
   }
 
-  
-
-//   const calculateScore = (userAnswers, questions) => {
-//     // Initialize the score to 0
-//     let score = 0;
-
-//     // Loop through the userAnswers array
-//     userAnswers.forEach((userAnswer) => {
-//       // Find the corresponding question from the questions array based on the question's text
-//       const question = questions.find(
-//         (q) => q.question === userAnswer.question
-//       );
-
-//       // Check if the user's answer matches the correct answer for the question
-//       if (question && userAnswer.answer === question.correctAnswer) {
-//         // Increment the score if the answer is correct
-//         score++;
-//       }
-//     });
-
-//     return score;
-//   };
-
-
-
-  //   if (showResultsModal) {
-  //     return (
-  //       <ResultsModal
-  //         score={calculateScore()}
-  //         totalQuestions={questions.length}
-  //         onClose={closeModal}
-  //       />
-  //     );
-  //   }
 
   return (
     <div>
@@ -222,4 +140,4 @@ const QuizPag = ({endQuiz}) => {
   );
 };
 
-export default QuizPag;
+export default QuizPage;
