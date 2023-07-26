@@ -35,6 +35,17 @@ const LoginPage = () => {
     // You can implement your authentication logic here (e.g., send login request to server)
   };
 
+  const handleSignUp = (e) => {
+    e.preventDefault();
+
+    // Do something with the username and password
+    console.log("Username:", username);
+    console.log("Password:", password);
+    navigate("/");
+
+    // You can implement your authentication logic here (e.g., send login request to server)
+  };
+
   const [isLogin, setIsLogin] = useState(true);
 
   return (
@@ -85,7 +96,7 @@ const LoginPage = () => {
         <>
           <form
             className="bg-white p-8 rounded shadow-md"
-            onSubmit={handleSubmit}
+            onSubmit={handleSignUp}
           >
             <h2 className="text-2xl font-bold mb-6">Sign up</h2>
             <div className="mb-4">
@@ -122,7 +133,7 @@ const LoginPage = () => {
               type="submit"
               className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
             >
-              Submit
+              Sign up
             </button>
             <p className="py-2 text-sm">
               Already have an account?{" "}

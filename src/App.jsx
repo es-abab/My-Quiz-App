@@ -8,6 +8,8 @@ import { Auth0Provider } from '@auth0/auth0-react';
 
 import { useState } from 'react';
 import IntroPage from './components/IntroPage';
+import Courses from './pages/Courses';
+import LandingPage from './pages/LandingPage';
 // import QuizPage from './components/QuizPage';
 // import { questions } from '../data/questions';
 
@@ -33,7 +35,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/landing" element={<LandingPage />} />
         <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/courses" element={<Courses />} />
       </Routes>
       </Auth0Provider>
     </>
