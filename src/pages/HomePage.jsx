@@ -13,7 +13,7 @@ const HomePage = () => {
       <Nav />
       <div className="flex">
         <SideNav />
-        <div className="py-5 px-[5vw] w-[75vw]"> 
+        <div className="flex flex-col justify-right items-left py-5 px-[5vw] w-[75vw]"> 
           <div className="text-left text-2xl font-semibold border-b-2 border-b-slate-300 mb-10 pb-2 w-[100%]">My Exams</div>
           <div>
             <Exams />
