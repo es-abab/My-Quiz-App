@@ -40,8 +40,12 @@ const SideNav = () => {
   };
 
   return (
-    <div >
-      <div className="bg-slate-400/50 w-[25vw] h-[90vh] py-10">
+    <>
+    {
+      isSideNavOpen ? (
+        <>
+        <div>
+      <div className="relative bg-slate-400/50 w-[18vw] h-[90vh] py-10 tansition duration-400 ease-in-out">
         <div className="sidebar-header">
           {/* <img src={WhiteLogo} alt="logo" className="sidebar-whiteLogo" /> */}
         </div>
