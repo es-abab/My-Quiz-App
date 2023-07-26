@@ -11,6 +11,7 @@ const LoginPage = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -21,7 +22,7 @@ const LoginPage = () => {
   };
 
   const handleConfirmPasswordChange = (e) => {
-    setPassword(e.target.value);
+    setConfirmPassword(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -41,7 +42,7 @@ const LoginPage = () => {
     // Do something with the username and password
     console.log("Username:", username);
     console.log("Password:", password);
-    navigate("/");
+    setIsLogin(true);
 
     // You can implement your authentication logic here (e.g., send login request to server)
   };
