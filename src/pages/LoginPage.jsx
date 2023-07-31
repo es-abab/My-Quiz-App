@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
+import "../App.css";
+import BlobAnimation from "../components/BlobAnimation";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -50,8 +52,15 @@ const LoginPage = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
+    <div className="login-bg-image flex items-center justify-center w-screen min-h-screen bg-slate-900">
+      <div className="animate-bounce_slow absolute top-64 left-54 z-1 w-[30vw] h-[20vw]">
+      <BlobAnimation />
+      </div>
 
-    <div className="flex items-center justify-center w-screen min-h-screen bg-slate-900">
+      <div className=" absolute top-54 right- z-1 w-[15vw] h-[20vw]">
+      <BlobAnimation />
+      </div>
+    <div className="z-10">
       {isLogin ? (
         <>
           <form
@@ -87,7 +96,10 @@ const LoginPage = () => {
             </button>
             <p className="text-sm py-2">
               Don't have an account?{" "}
-              <span className="text-blue-500 cursor-pointer" onClick={() => setIsLogin(false)}>
+              <span
+                className="text-blue-500 cursor-pointer"
+                onClick={() => setIsLogin(false)}
+              >
                 Sign up
               </span>
             </p>
@@ -138,13 +150,17 @@ const LoginPage = () => {
             </button>
             <p className="py-2 text-sm">
               Already have an account?{" "}
-              <span className="text-blue-500 cursor-pointer" onClick={() => setIsLogin(!isLogin)}>
+              <span
+                className="text-blue-500 cursor-pointer"
+                onClick={() => setIsLogin(!isLogin)}
+              >
                 Login
               </span>
             </p>
           </form>
         </>
       )}
+      </div>
     </div>
   );
 };
