@@ -15,14 +15,14 @@ const SideNav = () => {
   const menuItems = [
     {
       name: "home",
-      path: "/landing",
+      path: "/dashboard",
       icon: <MdDashboard />,
     },
-    {
-      name: "courses",
-      path: "/courses",
-      icon: <PiBooksFill />,
-    },
+    // {
+    //   name: "courses",
+    //   path: "/courses",
+    //   icon: <PiBooksFill />,
+    // },
     {
       name: "exams",
       path: "/home",
