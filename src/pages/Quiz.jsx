@@ -121,7 +121,7 @@ const Quiz = ({ endQuiz }) => {
         } */}
         </div>
         <Scoreboard />
-        {showResultsModal ? (
+        {/* {showResultsModal ? (
           <>
             <ResultsModal
               score={calculateScore()}
@@ -131,7 +131,7 @@ const Quiz = ({ endQuiz }) => {
           </>
         ) : (
           ""
-        )}
+        )} */}
 
         <ScrollToTopButton />
         {/* You may want to add navigation buttons to go to the next question */}
