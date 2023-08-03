@@ -10,32 +10,57 @@ const ScoreTable = () => {
   const data = [
     {
       key: "1",
-      dateTaken: "2023-07-01",
-      course: "Mathematics",
-      score: "85",
+      dateTaken: "2023-07-02",
+      course: "Load Balancers",
+      score: "14/25",
       status: "Completed",
     },
     {
       key: "2",
-      dateTaken: "2023-07-05",
-      course: "Science",
-      score: "92",
-      status: "Not Completed",
+      dateTaken: "2023-07-10",
+      course: "Moad Balancers 2",
+      score: "14/25",
+      status: "Completed",
     },
     {
       key: "3",
-      dateTaken: "2023-07-10",
-      course: "History",
-      score: "78",
+      dateTaken: "2023-07-13",
+      course: "Docker w/ AWS",
+      score: "18/25",
       status: "Completed",
     },
     {
       key: "4",
-      dateTaken: "2023-07-15",
-      course: "English",
-      score: "95",
+      dateTaken: "2023-07-14",
+      course: "Kubernetes",
+      score: "20/25",
+      status: "Completed",
+    },
+    {
+      key: "5",
+      dateTaken: "2023-07-16",
+      course: "Cloud Computing",
+      score: "n/a",
       status: "Not Completed",
     },
+    {
+      key: "6",
+      dateTaken: "2023-07-18",
+      course: "Devops",
+      score: "n/a",
+      status: "Not Completed",
+    },
+    {
+      key: "7",
+      dateTaken: "2023-07-26",
+      course: "Software Architecture",
+      score: "n/a",
+      status: "Not Completed",
+    },
+    
+
+    
+
     // Add more data as needed
   ];
 

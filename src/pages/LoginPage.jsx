@@ -57,7 +57,7 @@ const LoginPage = () => {
       <BlobAnimation />
       </div>
 
-      <div className=" absolute top-54 right- z-1 w-[15vw] h-[20vw]">
+      <div className=" absolute top-64 right- z-1 w-[15vw] h-[20vw]">
       <BlobAnimation />
       </div>
     <div className="z-10">

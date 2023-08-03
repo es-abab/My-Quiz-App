@@ -97,7 +97,7 @@ const QuizPag = ({endQuiz}) => {
   return (
     <div>
       <Navbar timeRemaining={timeRemaining} onSubmit={handleSubmit} />
-      <div className="ml-[10vw] border-b-2 border-b-white/50 my-5 w-[50vw]">
+      <div className="ml-[10vw] border-b-2 border-b-white/50 my-5 w-[40vw]">
         {questions.map((question) => (
           <Question
             key={question.id} // Add a unique key to each Question component

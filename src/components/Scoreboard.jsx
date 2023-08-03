@@ -9,13 +9,13 @@
 // export default Scoreboard
 
 
-import React from 'react';
+import React, { useState } from 'react';
 import Timer from './Timer';
 import Navbar from './NavBar';
 
 // const Scoreboard = ({ totalQuestions, answeredQuestions, unansweredQuestions }) => {
 
-const Scoreboard = () => {
+const Scoreboard = ({status}) => {
   // Calculate the number of pending questions
 //   const pendingQuestions = totalQuestions - answeredQuestions - unansweredQuestions;
 
@@ -29,19 +29,20 @@ const Scoreboard = () => {
     }
     return grid;
   };
+  const [answerStatus, setAnswerStatus] = useState('answered')
 
   const grid = generateGrid(5, 5); // 5 rows and 5 columns
 
   return (
     <div className='w-[30vw]'>
         {/* <Timer /> */}
-    <Navbar />  
+    {/* <Navbar />   */}
         
-    <div className=" fixed top-[150px] right-[130px] h-[28rem] w-[20rem] shadow-md h-[50vh] px-10 py-5 rounded-lg bg-slate-800">
+    <div className=" absolute top-[150px] right-[130px] h-[28rem] w-[20rem] shadow-md h-[50vh] px-10 py-5 rounded-lg bg-slate-800">
       <h2 className='mb-5 text-2xl text-white font-bold'>Score Board</h2>
       <div className="grid grid-cols-5 gap-2">
         {grid.map((index) => (
-          <div key={index} className="grid-item w-10 h-10 flex items-center justify-center bg-gray-200 border border-gray-300 rounded-full cursor-pointer">
+          <div key={index} className={`grid-item w-10 h-10 flex items-center justify-center ${answerStatus === 'not answered' ? (' bg-gray-200 border border-gray-300'): ('bg-orange-300 border-orange-500')} bg-gray-200 border border-gray-300 rounded-full cursor-pointer`}>
             {index + 1}
           </div>
         ))}
