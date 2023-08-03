@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaCheckCircle, FaWindowClose } from 'react-icons/fa'
 
 const ScoreTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -171,7 +172,13 @@ const ScoreTable = () => {
               <td className="px-4 py-2 text-left">{item.dateTaken}</td>
               <td className="px-4 py-2 text-left">{item.course}</td>
               <td className="px-4 py-2 text-left">{item.score}</td>
-              <td className="px-4 py-2 text-left">{item.status}</td>
+              {
+                item.status === 'Completed' ? 
+                (<td className="flex gap-3 px-4 py-2 text-left"><span className="text-green-400 text-xl flex items-center"><FaCheckCircle /></span>{item.status}</td>):
+                (
+                  <td className="flex gap-3 px-4 py-2 text-left"><span className="text-red-400 flex text-xl items-center"><FaWindowClose /></span>{item.status}</td>
+                )
+              }
             </tr>
           ))}
         </tbody>
