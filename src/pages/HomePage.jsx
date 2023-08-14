@@ -31,7 +31,7 @@ const HomePage = () => {
                 No courses available
               </div>
             ):(
-              <div>
+              <div className="flex flex-wrap gap-4">
           {incompleteCourses.map(course => (
         <Exams key={course.courseId} course={course} />
       ))}
@@ -47,7 +47,7 @@ const HomePage = () => {
                 No courses completed yet
               </div>
             ):(
-              <div>
+              <div className="flex flex-wrap gap-4">
           {completedCourses.map(course => (
         <ExamsCompleted key={course.courseId} course={course} />
       ))}

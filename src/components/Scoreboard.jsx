@@ -31,7 +31,7 @@ const Scoreboard = ({status}) => {
   };
   const [answerStatus, setAnswerStatus] = useState('answered')
 
-  const grid = generateGrid(5, 5); // 5 rows and 5 columns
+  const grid = generateGrid(5, 2); // 5 rows and 5 columns
 
   return (
     <div className='w-[30vw]'>

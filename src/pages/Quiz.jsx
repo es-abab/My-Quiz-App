@@ -52,6 +52,9 @@ const Quiz = ({ endQuiz }) => {
   };
 
   const handleSubmit = () => {
+    if(timeRemaining > 0) {
+      const result=window.confirm('Are you sure you want to submit?')
+    }
     const score = calculateScore(userAnswers, questions);
     setShowResultsModal(true);
   };
