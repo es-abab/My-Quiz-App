@@ -36,7 +36,7 @@ const Scoreboard = ({status}) => {
   return (
     <div className='w-[30vw]'>
         {/* <Timer /> */}
-    <Navbar />  
+    {/* <Navbar />   */}
         
     <div className=" absolute top-[150px] right-[130px] h-[28rem] w-[20rem] shadow-md h-[50vh]  py-5 rounded-lg bg-slate-800">
       <h2 className='mb-5 text-2xl text-white font-bold'>Score Board</h2>

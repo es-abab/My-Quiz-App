@@ -5,12 +5,19 @@ import animationData from "../assets/animation/data.json";
 import Nav from "../components/Nav";
 import SideNav from "../components/SideNav";
 import ScoreTable from "../components/ScoreTable";
-import { SlCalender} from 'react-icons/sl'
+// import { SlCalender} from 'react-icons/sl'
 import { BsFillCalendarCheckFill, BsFillCalendarWeekFill } from 'react-icons/bs'
 import { AiOutlineAreaChart } from 'react-icons/ai'
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
   const animationContainer = useRef(null);
+  const courses = useSelector((state) => state.courses); // Assuming you've defined your store slice as "courses"
+
+  const completedCourses = courses.filter(course => course.completeStatus).length;
+  const incompleteCourses = courses.filter(course => !course.completeStatus).length;
+  console.log(completedCourses)
+  
 
   useEffect(() => {
     // Initialize Lottie animation
@@ -40,7 +47,7 @@ const Dashboard = () => {
                 <div className=" flex items-center justify-center gap-4">
                   <div className="w-20 h-20 flex items-center justify-center font-bold text-4xl bg-orange-300 rounded-full"><BsFillCalendarCheckFill /></div>
                   <div className="flex flex-col justify-start items-start">
-                    <span className="font-bold text-4xl text-white">4/7</span>
+                    <span className="font-bold text-4xl text-white">{completedCourses}/{courses.length}</span>
                     <span className="font-semibold text-lg text-left leading-none mt-1 text-white/70">
                       Total Exams Completed
                     </span>
@@ -49,7 +56,7 @@ const Dashboard = () => {
                 <div className=" flex items-center justify-center gap-4">
                   <div className="w-20 h-20 flex items-center justify-center font-bold text-4xl bg-orange-300 rounded-full"><BsFillCalendarWeekFill /></div>
                   <div className="flex flex-col justify-start items-start">
-                    <span className="font-bold text-4xl text-white">3/7</span>
+                    <span className="font-bold text-4xl text-white">{incompleteCourses}</span>
                     <span className="font-semibold text-lg text-left leading-none mt-1 text-white/70">
                       Total Exams Due
                     </span>

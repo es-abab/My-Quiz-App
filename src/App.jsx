@@ -10,6 +10,7 @@ import { useState } from 'react';
 import IntroPage from './components/IntroPage';
 import Courses from './pages/Courses';
 import Dashboard from './pages/Dashboard';
+import Admin from './pages/Admin';
 // import QuizPage from './components/QuizPage';
 // import { questions } from '../data/questions';
 
@@ -38,6 +39,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       </Auth0Provider>
     </>

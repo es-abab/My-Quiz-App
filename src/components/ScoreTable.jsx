@@ -1,93 +1,24 @@
 import React, { useState } from "react";
 import { FaCheckCircle, FaWindowClose } from 'react-icons/fa'
+import { useDispatch, useSelector } from "react-redux";
 
 const ScoreTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterOption, setFilterOption] = useState('all');
-//   const [showCompleted, setShowCompleted] = useState(true);
-//   const [showNotCompleted, setShowNotCompleted] = useState(true);
-//   const [showAllCourses, setShowAllCourses] = useState(true);
 
-  const data = [
-    {
-      key: "1",
-      dateTaken: "2023-07-02",
-      course: "Load Balancers",
-      score: "14/25",
-      status: "Completed",
-    },
-    {
-      key: "2",
-      dateTaken: "2023-07-10",
-      course: "Moad Balancers 2",
-      score: "14/25",
-      status: "Completed",
-    },
-    {
-      key: "3",
-      dateTaken: "2023-07-13",
-      course: "Docker w/ AWS",
-      score: "18/25",
-      status: "Completed",
-    },
-    {
-      key: "4",
-      dateTaken: "2023-07-14",
-      course: "Kubernetes",
-      score: "20/25",
-      status: "Completed",
-    },
-    {
-      key: "5",
-      dateTaken: "2023-07-16",
-      course: "Cloud Computing",
-      score: "n/a",
-      status: "Not Completed",
-    },
-    {
-      key: "6",
-      dateTaken: "2023-07-18",
-      course: "Devops",
-      score: "n/a",
-      status: "Not Completed",
-    },
-    {
-      key: "7",
-      dateTaken: "2023-07-26",
-      course: "Software Architecture",
-      score: "n/a",
-      status: "Not Completed",
-    },
-    
+  // const dispatch = useDispatch();
+  const courses = useSelector((state) => state.courses); // Assuming you've defined your store slice as "courses"
+  console.log(courses)
 
-    
 
-    // Add more data as needed
-  ];
-
-//   const filteredData = data.filter((item) => {
-//     const includesSearchTerm =
-//       item.key.includes(searchTerm) ||
-//       item.dateTaken.includes(searchTerm) ||
-//       item.course.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//       item.score.includes(searchTerm);
-
-//     const matchesCourseFilter =
-//       showAllCourses ||
-//       (showCompleted && item.status === "Completed") ||
-//       (showNotCompleted && item.status === "Not Completed");
-
-//     return includesSearchTerm && matchesCourseFilter;
-//   });
-
-  const filteredData = data.filter((item) => {
+  const filteredData = courses.filter((course) => {
     const includesSearchTerm =
-      item.key.includes(searchTerm) ||
-      item.dateTaken.includes(searchTerm) ||
-      item.course.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.score.includes(searchTerm);
+      course.courseId.toString().includes(searchTerm) ||
+      course.dueDate.includes(searchTerm) ||
+      course.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.score.toString().includes(searchTerm);
 
-    const matchesCourseFilter = filterOption === 'all' || (filterOption === 'completed' && item.status === 'Completed') || (filterOption === 'not_completed' && item.status === 'Not Completed');
+    const matchesCourseFilter = filterOption === 'all' || (filterOption === 'completed' && course.completeStatus) || (filterOption === 'not_completed' && !course.completeStatus);
 
     return includesSearchTerm && matchesCourseFilter;
   });
@@ -119,35 +50,6 @@ const ScoreTable = () => {
         </label>
       </div>
 
-        {/* <div className="mb-4 flex justify-between items-center">
-          <label className="mr-4">
-            <input
-              type="checkbox"
-              checked={showCompleted}
-              onChange={() => setShowCompleted(!showCompleted)}
-              className="mr-2"
-            />
-            Completed
-          </label>
-          <label className="mr-4">
-            <input
-              type="checkbox"
-              checked={showNotCompleted}
-              onChange={() => setShowNotCompleted(!showNotCompleted)}
-              className="mr-2"
-            />
-            Not Completed
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={showAllCourses}
-              onChange={() => setShowAllCourses(!showAllCourses)}
-              className="mr-2"
-            />
-            Show All Courses
-          </label>
-        </div> */}
       </div>
 
       <table className="w-full table-auto shadow-lg rounded-xl">
@@ -161,22 +63,22 @@ const ScoreTable = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredData.map((item, index) => (
+          {filteredData.map((course, index) => (
             <tr
-              key={item.key}
+              key={course.courseId}
               className={`${
                 index % 2 === 0 ? "bg-gray-100" : "bg-white"
               } hover:bg-orange-200 cursor-pointer transition duration-300 ease-in`}
             >
-              <td className="px-4 py-2 text-left">{item.key}</td>
-              <td className="px-4 py-2 text-left">{item.dateTaken}</td>
-              <td className="px-4 py-2 text-left">{item.course}</td>
-              <td className="px-4 py-2 text-left">{item.score}</td>
+              <td className="px-4 py-2 text-left">{course.courseId}</td>
+              <td className="px-4 py-2 text-left">{course.dueDate}</td>
+              <td className="px-4 py-2 text-left">{course.courseName}</td>
+              <td className="px-4 py-2 text-left">{course.score}</td>
               {
-                item.status === 'Completed' ? 
-                (<td className="flex gap-3 px-4 py-2 text-left"><span className="text-green-400 text-xl flex items-center"><FaCheckCircle /></span>{item.status}</td>):
+                course.completeStatus ? 
+                (<td className="flex gap-3 px-4 py-2 text-left"><span className="text-green-400 text-xl flex items-center"><FaCheckCircle /></span>Completed</td>):
                 (
-                  <td className="flex gap-3 px-4 py-2 text-left"><span className="text-red-400 flex text-xl items-center"><FaWindowClose /></span>{item.status}</td>
+                  <td className="flex gap-3 px-4 py-2 text-left"><span className="text-red-400 flex text-xl items-center"><FaWindowClose /></span>Not Completed</td>
                 )
               }
             </tr>
