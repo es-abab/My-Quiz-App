@@ -1,18 +1,27 @@
 import React, { useState, useEffect} from "react";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from "../components/NavBar";
 import Question from "../components/Question";
 import Timer from "../components/Timer";
 import { questions } from "../data/questions";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import Scoreboard from "../components/Scoreboard";
+import { updateCourseScore, updateCourseStatus } from "../redux/courseSlice";
+import { useDispatch } from "react-redux";
 
 const Quiz = ({ endQuiz }) => {
+  const dispatch = useDispatch();
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
   const [timeRemaining, setTimeRemaining] = useState(30 * 60); // 30 minutes in seconds
   const [showResultsModal, setShowResultsModal] = useState(false);
   const [quizStarted, setQuizStarted] = useState(true);
+  const [completeMessage, setCompleteMessage] = useState('')
+
+  const location = useLocation();
+  const {course} = location.state;
+  console.log(course)
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -55,8 +64,26 @@ const Quiz = ({ endQuiz }) => {
     if(timeRemaining > 0) {
       const result=window.confirm('Are you sure you want to submit?')
     }
-    const score = calculateScore(userAnswers, questions);
+
+    const score = calculateScore(userAnswers, questions).toString();
+    // course.score = score;
+
+    if(score > score/2){
+      setCompleteMessage('Congratulations, you passed successfully!!')
+    }else{
+      setCompleteMessage('Sorry mate, you failed')
+    }
     setShowResultsModal(true);
+
+    const updatedCourse = {
+      ...course,
+      score: score,
+      completeStatus: true,
+    };
+
+    dispatch(updateCourseScore({courseId: course.courseId, score:score}));
+    dispatch(updateCourseStatus({courseId: course.courseId, completeStatus:updatedCourse.completeStaus}));
+    console.log(course)
   };
 
   const navigate = useNavigate();
@@ -74,8 +101,11 @@ const Quiz = ({ endQuiz }) => {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-slate-800 bg-opacity-70">
         <div className="bg-slate-800 p-6 w-[40vw] h-[25vh] rounded-md shadow-lg flex flex-col items-center justify-center">
+        {
+
+        }
           <h2 className="text-white text-3xl font-bold mb-4">
-            Quiz completed successfully!
+            {completeMessage}
           </h2>
           <h3 className="text-slate-200 text-lg font-semibold mb-10">
             Your Score: {calculateScore()} / {questions.length}

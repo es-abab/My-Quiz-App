@@ -11,7 +11,8 @@ const Exams = ({ course }) => {
   // const dispatch = useDispatch();
 
   const handleQuizStart = () => {
-    navigate('/quiz')
+
+    navigate('/quiz', { state: { course } })
   }
 
  

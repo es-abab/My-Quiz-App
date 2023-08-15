@@ -59,3 +59,14 @@
   animation: bounce_slow 4s infinite; /* Adjust the animation duration here */
   border: none; /* Remove the border */
 }
+
+
+/* isAdmin toggle button */
+.toggle-thumb {
+  transform: translateX(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+input:checked + .toggle-thumb {
+  transform: translateX(100%);
+}

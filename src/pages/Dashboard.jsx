@@ -16,7 +16,19 @@ const Dashboard = () => {
 
   const completedCourses = courses.filter(course => course.completeStatus).length;
   const incompleteCourses = courses.filter(course => !course.completeStatus).length;
-  console.log(completedCourses)
+
+  // Calculate the total sum of scores and the total number of courses
+  let totalScore = 0;
+  let totalCourses = courses.length;
+
+  courses.forEach((course) => {
+    totalScore += parseInt(course.score, 10); // Assuming score is stored as a string
+  });
+  
+  // Calculate the average score
+  // Calculate the average score as a percentage
+const averageScore = totalCourses > 0 ? (totalScore / totalCourses) * 100 : 0;
+console.log(completedCourses)
   
 
   useEffect(() => {
@@ -65,7 +77,7 @@ const Dashboard = () => {
                 <div className=" flex items-center justify-center gap-4">
                   <div className="w-20 h-20 bg-orange-300 rounded-full flex items-center justify-center font-bold text-5xl"><AiOutlineAreaChart /></div>
                   <div className="flex flex-col justify-start items-start">
-                    <span className="font-bold text-4xl text-white">70%</span>
+                    <span className="font-bold text-4xl text-white">{averageScore.toFixed(2)}%</span>
                     <span className="font-semibold text-lg text-left leading-none mt-1 text-white/70">Average Score</span>
                   </div>
                 </div>

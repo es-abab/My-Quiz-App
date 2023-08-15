@@ -7,9 +7,12 @@ import BlobAnimation from "../components/BlobAnimation";
 const LoginPage = () => {
   const navigate = useNavigate();
   const { loginWithRedirect } = useAuth0();
-  const handleSignin = () => {
-    navigate("/home");
-  };
+  const [isAdmin, setIsAdmin] = useState(false)
+
+ const handleAdminStatus = () => {
+  setIsAdmin((prevIsAdmin) => !prevIsAdmin);
+
+ }
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +36,12 @@ const LoginPage = () => {
     // Do something with the username and password
     console.log("Username:", username);
     console.log("Password:", password);
-    navigate("/home");
+
+    if(isAdmin) {
+      navigate("/home");
+    }else{
+      navigate('/admin')
+    }
 
     // You can implement your authentication logic here (e.g., send login request to server)
   };
@@ -68,6 +76,26 @@ const LoginPage = () => {
             onSubmit={handleSubmit}
           >
             <h2 className="text-2xl font-bold mb-6">Login</h2>
+
+            {/* <div className="flex items-center space-x-2 bg-slate-300 rounded-full p-2">
+      <label className={`flex items-center cursor-pointer ${isAdmin ? "text-blue-500 font-bold" : "text-gray-500 font-light"}`}>
+        {isAdmin ? "Student" : "Admin"}
+        <input type="checkbox" checked={isAdmin} onChange={handleAdminStatus} className="hidden" />
+        <span className={`ml-2 w-16 h-6 bg-gray-300 rounded-full shadow-inner toggle-thumb ${isAdmin ? "bg-blue-500 font-bold" : "bg-slate-900"}`} />
+      </label>
+    </div> */}
+           
+            <div className="flex items-center space-x-2 bg-slate-300 rounded-full p-2">
+      <label className={`flex items-center cursor-pointer ${isAdmin ? "text-blue-500 font-bold" : "text-gray-500 font-light"}`}>
+        {isAdmin && "Student"}
+        <input type="checkbox" checked={isAdmin} onChange={handleAdminStatus} className="hidden" />
+        <span className={`ml-2 w-16 h-6 bg-gray-300 rounded-full shadow-inner ${isAdmin ? "bg-blue-500" : ""} toggle-thumb`} />
+        <span className={`mr-2 flex justify-end ${isAdmin ? "text-slate-400 font-light" : "text-blue-500 font-bold"}`}>Admin</span>
+        {/* {!isAdmin && "Student"} */}
+        {!isAdmin && ""}
+      </label>
+    </div>
+
             <div className="mb-4">
               <label className="block font-semibold">Username</label>
               <input
