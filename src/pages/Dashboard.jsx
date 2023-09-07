@@ -14,22 +14,29 @@ const Dashboard = () => {
   const animationContainer = useRef(null);
   const courses = useSelector((state) => state.courses); // Assuming you've defined your store slice as "courses"
 
-  const completedCourses = courses.filter(course => course.completeStatus).length;
-  const incompleteCourses = courses.filter(course => !course.completeStatus).length;
+  // Calculate the total number of completed exams (a)
+  const totalCompletedExams = courses.filter((course) => course.completeStatus).length;
+  
+  // Calculate the total number of exams that are due (a)
+  const totalExamsDue = courses.filter((course) => !course.completeStatus).length;
+    
+  // Calculate the total number of all exams (b)
+  const totalExams = courses.length;
 
-  // Calculate the total sum of scores and the total number of courses
+  
+
+  // Calculate the total score of completed exams (a)
   let totalScore = 0;
-  let totalCourses = courses.length;
 
   courses.forEach((course) => {
-    totalScore += parseInt(course.score, 10); // Assuming score is stored as a string
+    if (course.completeStatus) {
+      totalScore += course.score;
+    }
   });
-  
-  // Calculate the average score
-  // Calculate the average score as a percentage
-const averageScore = totalCourses > 0 ? (totalScore / totalCourses) * 100 : 0;
-console.log(completedCourses)
-  
+
+  // Calculate the average score (a divided by the total number of completed exams)
+  const averageScore = totalCompletedExams > 0 ? totalScore / totalCompletedExams : 0;
+
 
   useEffect(() => {
     // Initialize Lottie animation
@@ -59,7 +66,7 @@ console.log(completedCourses)
                 <div className=" flex items-center justify-center gap-4">
                   <div className="w-20 h-20 flex items-center justify-center font-bold text-4xl bg-orange-300 rounded-full"><BsFillCalendarCheckFill /></div>
                   <div className="flex flex-col justify-start items-start">
-                    <span className="font-bold text-4xl text-white">{completedCourses}/{courses.length}</span>
+                    <span className="font-bold text-4xl text-white">{totalCompletedExams}/{totalExams}</span>
                     <span className="font-semibold text-lg text-left leading-none mt-1 text-white/70">
                       Total Exams Completed
                     </span>
@@ -68,7 +75,7 @@ console.log(completedCourses)
                 <div className=" flex items-center justify-center gap-4">
                   <div className="w-20 h-20 flex items-center justify-center font-bold text-4xl bg-orange-300 rounded-full"><BsFillCalendarWeekFill /></div>
                   <div className="flex flex-col justify-start items-start">
-                    <span className="font-bold text-4xl text-white">{incompleteCourses}</span>
+                    <span className="font-bold text-4xl text-white">{totalExamsDue}</span>
                     <span className="font-semibold text-lg text-left leading-none mt-1 text-white/70">
                       Total Exams Due
                     </span>
@@ -77,7 +84,7 @@ console.log(completedCourses)
                 <div className=" flex items-center justify-center gap-4">
                   <div className="w-20 h-20 bg-orange-300 rounded-full flex items-center justify-center font-bold text-5xl"><AiOutlineAreaChart /></div>
                   <div className="flex flex-col justify-start items-start">
-                    <span className="font-bold text-4xl text-white">{averageScore.toFixed(2)}%</span>
+                    <span className="font-bold text-4xl text-white">{averageScore}%</span>
                     <span className="font-semibold text-lg text-left leading-none mt-1 text-white/70">Average Score</span>
                   </div>
                 </div>

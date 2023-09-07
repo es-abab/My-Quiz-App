@@ -8,7 +8,7 @@ const ScoreTable = () => {
 
   // const dispatch = useDispatch();
   const courses = useSelector((state) => state.courses); // Assuming you've defined your store slice as "courses"
-  console.log(courses)
+  console.log('current courses',courses)
 
 
   const filteredData = courses.filter((course) => {

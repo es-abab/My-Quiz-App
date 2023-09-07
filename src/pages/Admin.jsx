@@ -42,6 +42,7 @@ const Admin = () => {
       courseName: "",
       timeOfExam: "",
       score: 0,
+      scorePercentage: 0,
       completeStatus: false,
     });
   };

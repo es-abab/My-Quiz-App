@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsCloudsFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { updateCourseStatus } from '../redux/courseSlice';
+import LoadingModal from "./LoadingModal";
 // import {BiSolidNetworkChart} from 'react-icons/bi'
 // import {MdApps} from 'react-icons/md'
 
-const Exams = ({ course }) => {
+const Exams = ({ course}) => {
   const navigate = useNavigate();
   // const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleQuizStart = () => {
 
-    navigate('/quiz', { state: { course } })
+    setIsLoading(true);
+
+    // // Simulate an asynchronous operation (e.g., an API request)
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate('/quiz', { state: { course } })
+    }, 3000); // Replace with your actual operation
+
+    
   }
 
  
@@ -35,7 +45,7 @@ const Exams = ({ course }) => {
           Click to Start
         </div>
       </div>
-
+      <LoadingModal isOpen={isLoading} />
      
     </div>
   );

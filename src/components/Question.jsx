@@ -51,21 +51,6 @@ const Question = ({ question, options, number, onAnswer }) => {
           </li>
         ))}
       </ul>
-       
-       {/* <ul className='flex gap-5'>
-         {options.map((option) => (
-          <li key={option} 
-          className='bg-grey-800'
-          >
-            <button 
-            // onClick={() => {onAnswer(option)}} 
-            onClick={() => handleOptionClick(option)}
-            className={`cursor-pointer ${
-              selectedAnswer === option ? 'bg-orange-200' : ' bg-slate-200' }`}
-            > {option}</button>
-          </li>
-        ))}
-      </ul> */}
     </div>
 
     {/* <div className="my-4">

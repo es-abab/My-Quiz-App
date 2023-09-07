@@ -35,6 +35,18 @@ const SideNav = () => {
     },
   ];
 
+  const handleSideBarNavigate = (item) => {
+    if(item.name === 'logout'){
+      const result= window.confirm('Are you sure you want to logout?')
+      
+       if(result) navigate(`${item.path}`)
+    }
+    else{
+      navigate(`${item.path}`)
+    }
+    
+  }
+
   const handleToggleSideNav = () => {
     setIsSideNavOpen(!isSideNavOpen);
   };
@@ -52,7 +64,8 @@ const SideNav = () => {
             <div
               className="flex gap-10 text-4xl font-semibold  py-5 px-10 w-full items-center cursor-pointer hover:bg-blue-300 duration-500 transition ease-in"
               key={key}
-              onClick={() => navigate(`${item.path}`)}
+              // onClick={() => navigate(`${item.path}`)}
+              onClick={() => handleSideBarNavigate(item)}
             >
               <div className="menuIcon">{item.icon}</div>
               <div className="itemName text-2xl">{item.name}</div>
@@ -66,7 +79,8 @@ const SideNav = () => {
             <div
               className="flex  gap-10 text-4xl font-bold  py-5 px-10 w-full items-center cursor-pointer hover:bg-blue-300 duration-500 transition ease-in"
               key={key}
-              onClick={() => navigate(`${item.path}`)}
+              // onClick={() => navigate(`${item.path}`)}
+              onClick={() => handleSideBarNavigate(item)}
             >
               <div className="menuIcon">{item.icon}</div>
             </div>

@@ -66,6 +66,7 @@ const Quiz = ({ endQuiz }) => {
     }
 
     const score = calculateScore(userAnswers, questions).toString();
+    const percentage = (score/questions.length)*100;
     // course.score = score;
 
     if(score > score/2){
@@ -79,11 +80,12 @@ const Quiz = ({ endQuiz }) => {
       ...course,
       score: score,
       completeStatus: true,
+      scorePercentage: percentage,
     };
 
-    dispatch(updateCourseScore({courseId: course.courseId, score:score}));
+    dispatch(updateCourseScore({courseId: course.courseId, score:score, scorePercentage:percentage}));
     dispatch(updateCourseStatus({courseId: course.courseId, completeStatus:updatedCourse.completeStaus}));
-    console.log(course)
+    console.log(course.scorePercentage)
   };
 
   const navigate = useNavigate();

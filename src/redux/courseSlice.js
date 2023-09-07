@@ -22,10 +22,12 @@ const courseSlice = createSlice({
     },
 
     updateCourseScore: (state, action) => {
-      const { courseId, score } = action.payload;
+      const { courseId, score, percentage } = action.payload;
+      console.log(percentage)
       const courseScoreToUpdate = state.find((course) => course.courseId === courseId);
       if (courseScoreToUpdate) {
         courseScoreToUpdate.score = score;
+        courseScoreToUpdate.scorePercentage = percentage;
       }
     },
   },
